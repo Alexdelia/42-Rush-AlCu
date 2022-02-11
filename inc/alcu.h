@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/11 21:27:08 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/11 23:04:21 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,13 @@
 typedef struct s_map
 {
 	size_t	*map; // tab of int size of number of row, each index holding the number of heaps
+	size_t	n_item;
 	size_t	n_heap;
-	size_t	n_row;
 	int		winner;
 }			t_map;
+
+bool	parse(t_map *map, const int fd);
+
+bool	clear_map(t_map *map);
 
 #endif
