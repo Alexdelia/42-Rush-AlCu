@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/01/29 13:06:23 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/11 19:23:56 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@
 
 # ifndef PB_BUFFER
 #  define PB_BUFFER	40000
+# endif
+
+# ifndef GAL_INIT_BUFFER
+#  define GAL_INIT_BUFFER	40000
+# endif
+
+# ifndef GAL_BUFFER
+#  define GAL_BUFFER	280000
 # endif
 
 typedef struct s_list
@@ -111,6 +119,8 @@ size_t			ft_strlcpy(char *dst, const char *src, const size_t size);
 size_t			ft_strocpy(char *dst, const char *src, const size_t size);
 char			*ft_strjoin_free(char *s1, char *s2,
 					bool const f1, bool const f2);
+char			*ft_str_extend(char *str, const size_t size,
+					const size_t capacity);
 
 int				ft_nbrlen(int nb);
 int				ft_abs(int n);
@@ -120,5 +130,7 @@ int				ft_next_prime(int n);
 int				ft_prev_prime(int n);
 unsigned long	ft_next_prime_ul(unsigned long n);
 unsigned long	ft_prev_prime_ul(unsigned long n);
+
+char			*gal(const int fd, size_t *size);
 
 #endif
