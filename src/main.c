@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:53:36 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/11 21:16:05 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/11 21:38:13 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,21 @@
 int	main(int ac, char **av)
 {
 	t_map	map; // int that represent winner is also saved in map
+	int		fd;
 
-	if (ac != 2)
-		return (ft_pser("no file\n") * 0 + 1); // tmp
-	if (!parse(av[1], &map))
-		return (2);
+	// init fd can be in parse or somewhere else than main
+	if (ac == 1)
+		fd = STDIN;
+	else if (ac == 2)
+	{
+		fd = open(av[1], O_RDONLY);
+		if (fd == -1)
+			return (ft_pser("can't open file"));
+	}
+	else
+		return (ft_pser("ERROR\n") * 0 + 2); // tmp
+	if (!parse(&map, fd))
+		return (3);
 	print_map(map);
 	ia(&map);
 	while (map->n_heap > 0)
@@ -36,6 +46,6 @@ int	main(int ac, char **av)
 		ia(&map);
 	}
 	print_winner(map->winner);
-	// clear map if malloc
+	clear_map(&map);
 	return (0);
 }

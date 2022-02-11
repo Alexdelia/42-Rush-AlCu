@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:50:56 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/11 19:43:31 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/11 21:36:29 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*gal(const int fd, size_t *size)
 	ssize_t	res;
 
 	*size = 0;
-	output = (char *)malloc(sizeof(char) * GAL_INIT_BUFFER + 1);
+	output = (char *)malloc(sizeof(char) * (GAL_INIT_BUFFER + 1));
 	if (!output)
 		return (gal_error(fd, output));
 	res = read(fd, output, GAL_INIT_BUFFER);
