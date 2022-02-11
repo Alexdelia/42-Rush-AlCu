@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:21:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/11 23:09:31 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/11 23:31:12 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,19 +95,21 @@ bool	parse(t_map *map, const int fd)
 	char	*file;
 	size_t	size;
 
-	map->map = NULL;
-	map->n_item = 0;
-	map->n_heap = 0;
-	map->winner = NO_WIN;
 	file = gal(fd, &size);
 	if (!file)
 		return (!ft_pser("ERROR reading file\n")); // tmp
 	else if (!size)
+	{
+		free(file);
 		return (!ft_pser("ERROR empty file\n")); // tmp
+	}
 	n_heap(map, file); // should not need to check if n_heap > 0
 	map->map = (size_t *)malloc(sizeof(size_t) * (map->n_heap + 1));
 	if (!map->map)
+	{
+		free(file);
 		return (!ft_pser("ERROR malloc failed\n")); // tmp
+	}
 	if (!fill_map(map, file))
 	{
 		free(file);
