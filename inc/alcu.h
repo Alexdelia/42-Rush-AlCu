@@ -30,6 +30,7 @@ typedef struct s_map
 }			t_map;
 
 bool	parse(t_map *map, const int fd);
+void	print_map(t_map map);
 
 bool	clear_map(t_map *map);
 
