@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:24:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 19:43:04 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:47:35 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,21 @@ void	print_map(const t_map map)
 
 	highest = highest_len(map);
 	i = 0;
+	write(1, "\n", 1);
 	ft_ps(C_BOLD);
 	while (map.map[i])
 	{
 		len = map.map[i];
 		diff = highest - len;
-		while (--diff >= 0)
+		while (diff-- > 0)
 			write(1, " ", 1);
-		while (--len >= 0)
+		while (len-- > 0)
 			write(1, "| ", 2);
 		write(1, "\n", 1);
 		i++;
 	}
 	ft_ps(C_RESET);
+	write(1, "\n", 1);
 }
 
 void	print_winner(const int winner)
