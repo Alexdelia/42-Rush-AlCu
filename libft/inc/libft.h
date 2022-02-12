@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/11 19:23:56 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:20:30 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,14 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void*));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *));
 
-ssize_t			ft_ps(char *str);
-ssize_t			ft_psc(char *str, char *color);
-ssize_t			ft_pser(char *str);
-ssize_t			ft_pserc(char *str, char *color);
+ssize_t			ft_ps(const char *str);
+ssize_t			ft_psc(const char *str, const char *color);
+ssize_t			ft_pser(const char *str);
+ssize_t			ft_pserc(const char *str, const char *color);
 ssize_t			ft_pn(int nbr);
 ssize_t			ft_pner(int nbr);
-ssize_t			ft_pnc(int nbr, char *color);
-ssize_t			ft_pnerc(int nbr, char *color);
+ssize_t			ft_pnc(int nbr, const char *color);
+ssize_t			ft_pnerc(int nbr, const char *color);
 
 void			ft_pb(const bool w, const char *str);
 void			ft_pb_s(const bool w, const char *str, const size_t size);

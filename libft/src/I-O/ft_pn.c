@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:04:32 by adelille          #+#    #+#             */
-/*   Updated: 2022/01/29 13:04:54 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:20:43 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ ssize_t	ft_pner(int nbr)
 	return (ft_nbrlen(nbr));
 }
 
-ssize_t	ft_pnc(int nbr, char *color)
+ssize_t	ft_pnc(int nbr, const char *color)
 {
 	ssize_t	size;
 
@@ -35,7 +35,7 @@ ssize_t	ft_pnc(int nbr, char *color)
 	return (size);
 }
 
-ssize_t	ft_pnerc(int nbr, char *color)
+ssize_t	ft_pnerc(int nbr, const char *color)
 {
 	ssize_t	size;
 
