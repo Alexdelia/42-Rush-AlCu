@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:53:36 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 11:02:07 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 11:05:29 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int ac, char **av)
 	if (!parse(&map, fd))
 		return (2);
 	print_map(map);
-	ia(&map);
+	//ia(&map);
 	while (map.n_item > 0)
 	{
 		print_map(map);
@@ -94,9 +94,9 @@ int	main(int ac, char **av)
 		// it also save input in map
 		// this is tempoary, could be different logic
 		print_map(map);
-		ia(&map);
+		//ia(&map);
 	}
-	print_winner(map.winner); // if winner == NO_WIN, don't print anything
+	//print_winner(map.winner); // if winner == NO_WIN, don't print anything
 	clear_map(&map);
 	return (0);
 }

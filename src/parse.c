@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:21:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 11:00:07 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 11:04:22 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ static bool	fill_map(t_map *map, const char *file)
 		map->n_item += map->map[heap];
 		heap++;
 	}
-	map->heap = 0;
+	map->map[heap] = 0;
 	return (true);
 }
 

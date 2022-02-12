@@ -6,13 +6,13 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:15:05 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 11:00:13 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 11:09:43 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/alcu.h"
 
-static size_t	n_item_last_heap(t_map *map)
+static size_t	last_heap(t_map *map)
 {
 	size_t	i;
 
@@ -20,6 +20,21 @@ static size_t	n_item_last_heap(t_map *map)
 	while (map->map[i] != 0)
 		i++;
 	return (map->map[i]);
+}
+
+static void	prompt_message(const size_t max)
+{
+	char	c;
+
+	ft_ps("Please choose between 1 and ");
+	if (max < 3)
+	{
+		c = max + '0';
+		write(1, &c, 1);
+	}
+	else
+		write(1, "3", 1);
+	write(1, "\n", 1);
 }
 
 bool	prompt(t_map *map)
@@ -33,12 +48,7 @@ bool	prompt(t_map *map)
 	choice = 0;
 	while (choice == 0)
 	{
-		ft_ps("Please choose between 1 and ");
-		if (n_item_last_heap < 3)
-			write(1, map->map[last_index] + '0', 1);
-		else
-			write(1, "3", 1);
-		write(1, "\n", 1);
+		prompt_message(map->map[last_index]);
 		input = gal(0, &size);
 		if (!input)
 			return (true);
