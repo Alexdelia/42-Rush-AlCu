@@ -6,7 +6,7 @@
 /*   By: esafar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 11:44:05 by esafar            #+#    #+#             */
-/*   Updated: 2022/02/12 22:35:02 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 22:56:24 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ static bool	find_reverse(t_map *map, size_t i)
 	if (map->map[i - 1] != 1)
 		return (false);
 	n = 0;
-	i--;
-	while (i >= 0 && map->map[i] == 1)
+	while (i > 0 && map->map[i - 1] == 1)
 	{
 		n++;
 		i--;
