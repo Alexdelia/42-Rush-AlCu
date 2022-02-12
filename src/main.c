@@ -76,11 +76,32 @@ static bool	init_map(const int ac, char **av, t_map *map, int *fd)
 	return (new);
 }*/
 
+int check_extension(char *file_name)
+{
+	int i;
+	int j;
+	char *ext;
+
+	ext = ".map\0";
+	i = 0;
+	while (file_name[i] && file_name[i] != '.')
+		i++;
+	j = 0;
+	while (file_name[i + j] && ext[j] && file_name[i + j] == ext[j])
+		j++;
+	if (j == 4 && file_name[i + j] == '\0' && ext[j] == '\0')
+		return(1);
+	ft_pser("ERROR wrong map extension.\n");
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_map	map; // int that represent winner is also saved in map
 	int		fd;
 
+	if (!check_extension(av[1]))
+		return (0);
 	if (!init_map(ac, av, &map, &fd))
 		return (1);
 	if (!parse(&map, fd))
