@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 18:52:30 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:50:16 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,19 @@
 # define IA_WIN		1
 # define USER_WIN	2
 
-
-# define NORMAL		true
-# define REVERSE	false
+# define NORMAL		1
+# define REVERSE	0
 
 typedef struct s_map
 {
-	size_t	*map; // tab of int size of number of row, each index holding the number of heaps
+	size_t	*map;
 	size_t	n_item;
 	size_t	n_heap;
 	int		winner;
 }			t_map;
 
 bool	parse(t_map *map, const int fd);
-void    ia(t_map *map);
+void	ia(t_map *map);
 bool	prompt(t_map *map);
 
 void	print_map(t_map map);
