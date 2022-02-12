@@ -6,11 +6,13 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:24:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 21:24:19 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 22:29:05 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/alcu.h"
+
+#include <stdio.h>
 
 /*void	print_map(t_map map)
 {
@@ -47,6 +49,30 @@
 	return ;
 }*/
 
+static void	print_arrow(size_t len, const size_t highest)
+{
+	size_t	diff;
+	size_t	i;
+
+	ft_ps(C_GREEN);
+	ft_ps(C_FLASH);
+	diff = highest - len;
+	while (diff-- > 0)
+		write(1, " ", 1);
+	ft_ps("\U00002570");
+	while (len-- > 1)
+		write(1, "--", 2);
+	ft_ps("-\U0000256F\n");
+	i = 0;
+	while (i < highest)
+	{
+		write(1, " ", 1);
+		i++;
+	}
+	ft_psc("\U000021E1", C_BOLD);
+	write(1, "\n", 1);
+}
+
 static size_t	highest_len(const t_map map)
 {
 	size_t	highest;
@@ -77,6 +103,7 @@ void	print_map(const t_map map)
 	ft_ps(C_ITALIC);
 	while (map.map[i])
 	{
+		write(1, " ", 1);
 		len = map.map[i];
 		diff = highest - len;
 		while (diff-- > 0)
@@ -87,6 +114,7 @@ void	print_map(const t_map map)
 		i++;
 	}
 	ft_ps(C_RESET);
+	print_arrow(map.map[i - 1], highest);
 	write(1, "\n", 1);
 }
 

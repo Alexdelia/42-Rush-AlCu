@@ -6,7 +6,7 @@
 /*   By: esafar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 11:44:05 by esafar            #+#    #+#             */
-/*   Updated: 2022/02/12 21:27:53 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 22:35:02 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ static void	case_regular(t_map *map, size_t *i, bool *order)
 
 static bool	take(t_map *map, const size_t i, const size_t n)
 {
-	//fprintf(stderr, "[i] n > item = [%ld] %ld > %ld\n", n, i, map->map[i]);
 	if (n > map->map[i])
 		return (error("IA TAKE TOO MUCH", 0));
 	map->map[i] -= n;
 	map->n_item -= n;
-	ft_ps("IA took ");
-	ft_pn(n);
+	ft_ps(C_ITALIC);
+	ft_ps("IA take ");
+	ft_pnc(n, C_BOLD);
 	write(1, "\n", 1);
 	if (map->n_item == 0)
 		map->winner = USER_WIN;
@@ -91,17 +91,17 @@ void	ia(t_map *map)
 		case_regular(map, &i, &order);
 	if (order == NORMAL && map->map[i] % 4 != 1)
 	{
-		ft_pserc("NORMAL\n", C_GREEN);
+		ft_ps("    😁\n");
 		take(map, i, ((map->map[i] - 1) % 4));
 	}
 	else if (order == REVERSE && map->map[i] % 4 > 0)
 	{
-		ft_pserc("REVERSE\n", C_YELLOW);
+		ft_ps("    🙃\n");
 		take(map, i, ((map->map[i]) % 4));
 	}
 	else
 	{
-		ft_pserc("I am losing :,c\n", C_RED);
+		ft_ps("    😡\n");
 		take(map, i, 1);
 	}
 }
