@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:53:36 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 18:58:04 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:33:57 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ bool	clear_map(t_map *map)
 	return (false);
 }
 
-static bool	check_extension(char *file_name)
+static bool	check_extension(const char *file_name)
 {
-	int i;
-	int j;
-	char *ext;
+	size_t	i;
+	size_t	j;
+	char	*ext;
 
 	ext = ".map\0";
 	i = 0;
@@ -33,8 +33,8 @@ static bool	check_extension(char *file_name)
 	while (file_name[i + j] && ext[j] && file_name[i + j] == ext[j])
 		j++;
 	if (j == 4 && file_name[i + j] == '\0' && ext[j] == '\0')
-		return(true);
-	return (error("ERROR wrong map extension", 0));
+		return (true);
+	return (error("wrong map extension", 0));
 }
 
 static bool	init_map(const int ac, char **av, t_map *map, int *fd)
@@ -52,7 +52,8 @@ static bool	init_map(const int ac, char **av, t_map *map, int *fd)
 	else
 	{
 		error(NULL, 0);
-		return (!ft_pserc("Please enter a board in parameter or in stdin\n", C_BOLD));
+		return (!ft_pserc("Please enter a board in parameter or in stdin\n",
+				C_BOLD));
 	}
 	map->map = NULL;
 	map->n_item = 0;
