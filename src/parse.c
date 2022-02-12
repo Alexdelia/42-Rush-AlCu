@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:21:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 19:23:57 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:31:46 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ static bool	check_digit(const char *file, const size_t size)
 			if (file[i] == '\n')
 			{
 				if (n == true)
-					return (!ft_pser("ERROR a line cannot be empty\n")); // tmp
+					return (error("a line cannot be empty", 0));
 				n = true;
 			}
 			else
-				return (!ft_pser("ERROR input must only contain digit\n")); // tmp
+				return (error("input must only contain digit", 0));
 			n = false;
 		}
 		i++;
@@ -60,11 +60,11 @@ size_t	line_to_size_t(const char *file, size_t *i, const size_t size)
 	{
 		ret = ret * 10 + (file[*i] - '0');
 		if (ret > 10000)
-			return (!ft_pser("ERROR number of item on heap > 10000\n")); // tmp
+			return (error("number of item on heap > 10000", 0));
 		++*i;
 	}
 	if (ret == 0)
-		return (!ft_pser("ERROR heap can't have 0 item\n")); // tmp
+		return (error("a heap cannot have 0 item", 0));
 	if (*i < size)
 		++*i;
 	return (ret);
@@ -98,18 +98,18 @@ bool	parse(t_map *map, const int fd)
 
 	file = gal(fd, &size, true);
 	if (!file)
-		return (!ft_pser("ERROR reading file\n")); // tmp
+		return (error("reading file", 0));
 	else if (!size)
 	{
 		free(file);
-		return (!ft_pser("ERROR empty file\n")); // tmp
+		return (error("empty file", 0));
 	}
-	n_heap(map, file, size); // should not need to check if n_heap > 0
+	n_heap(map, file, size);
 	map->map = (size_t *)malloc(sizeof(size_t) * (map->n_heap + 1));
 	if (!map->map)
 	{
 		free(file);
-		return (!ft_pser("ERROR malloc failed\n")); // tmp
+		return (error("malloc failed", 0));
 	}
 	if (!fill_map(map, file, size))
 	{
