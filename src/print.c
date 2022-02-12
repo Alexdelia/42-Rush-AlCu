@@ -6,13 +6,13 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:24:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 18:55:28 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:43:04 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/alcu.h"
 
-void	print_map(t_map map)
+/*void	print_map(t_map map)
 {
 	int j = 0;
 	int len = 0;
@@ -45,6 +45,46 @@ void	print_map(t_map map)
 		j++;
 	}
 	return ;
+}*/
+
+static size_t	highest_len(const t_map map)
+{
+	size_t	highest;
+	size_t	i;
+
+	highest = 0;
+	i = 0;
+	while (map.map[i])
+	{
+		if (map.map[i] > highest)
+			highest = map.map[i];
+		i++;
+	}
+	return (highest);
+}
+
+void	print_map(const t_map map)
+{
+	size_t	len;
+	size_t	highest;
+	size_t	diff;
+	size_t	i;
+
+	highest = highest_len(map);
+	i = 0;
+	ft_ps(C_BOLD);
+	while (map.map[i])
+	{
+		len = map.map[i];
+		diff = highest - len;
+		while (--diff >= 0)
+			write(1, " ", 1);
+		while (--len >= 0)
+			write(1, "| ", 2);
+		write(1, "\n", 1);
+		i++;
+	}
+	ft_ps(C_RESET);
 }
 
 void	print_winner(const int winner)
