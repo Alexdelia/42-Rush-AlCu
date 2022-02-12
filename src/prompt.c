@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:15:05 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 11:42:26 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:28:33 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,31 @@ static void	prompt_message(const size_t max)
 	write(1, "\n", 1);
 }
 
+static bool	input_check(const char *input, const size_t size,
+	size_t *choice, const size_t max)
+{
+	if (*choice == 0 || *choice > 3 || *choice > max)
+	{
+		ft_ps(input);
+		ft_ps(" - Invalid choice\n");
+		choice = 0;
+		return (false);
+	}
+	else if (size == 2)
+	{
+		if (input[1] == '\n')
+			return (true);
+	}
+	else if (size > 1)
+	{
+		ft_ps(input);
+		ft_ps(" - Invalid choice\n");
+		choice = 0;
+		return (false);
+	}
+	return (true);
+}
+
 bool	prompt(t_map *map)
 {
 	char	*input;
@@ -55,20 +80,18 @@ bool	prompt(t_map *map)
 		if (!input)
 			return (true);
 		if (!size)
-			ft_ps("Please input something\n");
-		else
-			choice = input[0] - '0';
-		if (size > 1 || choice == 0 || choice > 3 || choice > map->map[last_index])
-		{
-			ft_ps(input);
-			ft_ps(" - Invalid choice\n");
-			choice = 0;
-		}
+			return (ft_ps("Please enter map from stdin directly\n"));
+		choice = input[0] - '0';
+		input_check(input, size, &choice, map->map[last_index]);
 		free(input);
+		input = NULL;
 	}
 	map->map[last_index] -= choice;
 	map->n_item -= choice;
 	if (map->map[0] == 0)
+	{
+		map->winner = IA_WIN;
 		return (true);
+	}
 	return (false);
 }
