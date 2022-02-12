@@ -45,7 +45,7 @@ void	print_map(t_map map)
 	int diff = 0;
 	int highest_len = 0;
 
-	while (map.map[j]) // get the biggest line nb
+	while (map.map[j])
 	{
 		len = map.map[j];
 		if (len > highest_len)
