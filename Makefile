@@ -15,10 +15,10 @@ CC = 	cc
 AR =	ar rcs
 RM = 	rm -rf
 
-CFLAGS =	-Wall -Werror -Wextra
+CFLAGS =	#-Wall -Werror -Wextra
 # CFLAGS +=	-O2
 CFLAGS +=	-g3
-CFLAGS +=	-fsanitize=address
+# CFLAGS +=	-fsanitize=address
 
 # **************************************************************************** #
 #	MAKEFILE	#
