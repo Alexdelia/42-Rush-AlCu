@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 19:22:56 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 23:02:50 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@
 # endif
 
 # ifndef GAL_INIT_BUFFER
-#  define GAL_INIT_BUFFER	40000
+#  define GAL_INIT_BUFFER	100
 # endif
 
 # ifndef GAL_BUFFER
-#  define GAL_BUFFER	280000
+#  define GAL_BUFFER	28000
 # endif
 
 typedef struct s_list
