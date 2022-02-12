@@ -6,7 +6,7 @@
 /*   By: esafar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 11:44:05 by esafar            #+#    #+#             */
-/*   Updated: 2022/02/12 19:16:32 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 20:27:28 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,16 @@ static bool	find_reverse(t_map *map, size_t i)
 	return (n % 2);
 }
 
-static bool	case_4(t_map *map, bool *order)
+static bool	case_4(t_map *map, size_t *i, bool *order)
 {
-	size_t	i;
-
-	i = 0;
-	while (map->map[i] != 0)
+	while (map->map[*i] != 0)
 	{
-		if (map->map[i] > 4)
+		if (map->map[*i] > 4)
 			return (false);
-		i++;
+		++*i;
 	}
-	i--;
-	if (find_reverse(map, i))
+	--*i;
+	if (find_reverse(map, *i))
 		*order = REVERSE;
 	else
 		*order = NORMAL;
@@ -88,7 +85,7 @@ void	ia(t_map *map)
 	size_t	i;
 
 	i = 0;
-	if (!case_4(map, &order))
+	if (!case_4(map, &i, &order))
 		case_regular(map, &i, &order);
 	if (order == NORMAL && map->map[i] % 4 != 1)
 	{
