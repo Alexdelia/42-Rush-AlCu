@@ -6,12 +6,12 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/02/11 19:46:02 by adelille         ###   ########.fr        #
+#    Updated: 2022/02/12 14:57:33 by esafar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME =	libft.a
-CC = 	clang
+CC = 	cc
 AR =	ar rcs
 RM = 	rm -rf
 

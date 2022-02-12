@@ -6,7 +6,7 @@
 /*   By: esafar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 11:44:05 by esafar            #+#    #+#             */
-/*   Updated: 2022/02/12 14:34:13 by esafar           ###   ########.fr       */
+/*   Updated: 2022/02/12 14:58:54 by esafar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,44 @@ void    ia(t_map *map)
     // if (start != 0 && good_setup(map))
 
 
+static bool take(t_map *map, const size_t i, const int n)
+{
+    if (n > map->map[i])
+	return (!ft_pser("ERROR IA TAKE TOO MUCH\n"));
+    map->map[i] -= n;
+    map->n_item -= n;
+    ft_ps("IA took ");
+    ft_pn(n);
+    write(1, "\n", 1);
+    if (map->n_item == 0)
+	map->winner = USER_WIN;
+    return (true);
+}
+
 void    ia(t_map *map)
 {
-	bool	take;
+	bool	order;
 	size_t	i;
 	
 	if (map->map[0] % 4 == 1)
-	    take = USER_TAKE;
+	    order = USER_TAKE;
 	else
-	    take = IA_TAKE
+	    order = IA_TAKE;
 	i = 1;
 	while (map->map[i] != 0)
 	{
 	    if (map->map[i] % 4 == 1)
-		take = !take;
+		order = !order;
 	    i++;
 	}
 	i--;
-	if (take == USER_TAKE && map->map[i] % 4 != 1)
-	    take(map->map[i] % 4 - 1);
-	else if (take == IA_TAKE && map->map[i] % 4 > 0)
-	    take(map->map[i] % 4 - 1);
+	if (order == USER_TAKE && map->map[i] % 4 != 1)
+	    take(map, i, map->map[i] % 4);
+	else if (order == IA_TAKE && map->map[i] % 4 > 0)
+	    take(map, i, map->map[i] % 4);
 	else
-	    take(1);
+	{
+	    take(map, i, 1);
+	    ft_pserc("I am losing :,c\n", C_RED);
+	}
 }
