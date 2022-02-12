@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:53:36 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 14:35:11 by esafar           ###   ########.fr       */
+/*   Updated: 2022/02/12 15:25:42 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	main(int ac, char **av)
 		print_map(map);
 		if (prompt(&map))
 			break ;
+		//ft_ps("\33[1;1H\33[2J");
 		print_map(map);
 		ia(&map);
 	}
