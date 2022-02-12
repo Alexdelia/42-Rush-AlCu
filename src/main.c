@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:53:36 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 12:24:40 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:30:51 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,41 +38,6 @@ static bool	init_map(const int ac, char **av, t_map *map, int *fd)
 	return (true);
 }
 
-void	print_map(t_map map)
-{
-	int j = 0;
-	int len = 0;
-	int diff = 0;
-	int highest_len = 0;
-
-	while (map.map[j]) // get the biggest line nb
-	{
-		len = map.map[j];
-		if (len > highest_len)
-			highest_len = len;
-		j++;
-	}
-	j = 0;
-	while (map.map[j])
-	{
-		len = map.map[j];
-		diff = highest_len - len;
-		while (diff > 0)
-		{
-			write(1, " ", 1);
-			diff--;
-		}
-		while (len > 0)
-		{
-			write(1, "| ", 2);
-			len--;
-		}
-		write(1, "\n", 1);
-		j++;
-	}
-	return ;
-}
-
 int	main(int ac, char **av)
 {
 	t_map	map; // int that represent winner is also saved in map
@@ -87,12 +52,8 @@ int	main(int ac, char **av)
 	while (map.n_item > 0)
 	{
 		print_map(map);
-		if (prompt(&map)) // need to get input from user, save it somewhere
+		if (prompt(&map))
 			break ;
-		// stay in the prompt while the user didn't input something valid
-		// prompt return a bool (true if user lose / false if game continue)
-		// it also save input in map
-		// this is tempoary, could be different logic
 		print_map(map);
 		//ia(&map);
 	}
