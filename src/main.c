@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:53:36 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 17:52:40 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 18:58:04 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static bool	check_extension(char *file_name)
 		j++;
 	if (j == 4 && file_name[i + j] == '\0' && ext[j] == '\0')
 		return(true);
-	return (!ft_pser("ERROR wrong map extension.\n")); // tmp
+	return (error("ERROR wrong map extension", 0));
 }
 
 static bool	init_map(const int ac, char **av, t_map *map, int *fd)
@@ -47,10 +47,13 @@ static bool	init_map(const int ac, char **av, t_map *map, int *fd)
 			return (false);
 		*fd = open(av[1], O_RDONLY);
 		if (*fd == -1)
-			return (!ft_pser("can't open file")); // tmp
+			return (error("can't open file", 0));
 	}
 	else
-		return (!ft_pser("ERROR\n")); // tmp
+	{
+		error(NULL, 0);
+		return (!ft_pserc("Please enter a board in parameter or in stdin\n", C_BOLD));
+	}
 	map->map = NULL;
 	map->n_item = 0;
 	map->n_heap = 0;

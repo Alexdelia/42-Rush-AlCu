@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 16:49:03 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 18:52:30 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,13 @@
 
 # include <fcntl.h>
 
-# define	NO_WIN		0
-# define	IA_WIN		1
-# define	USER_WIN	2
+# define NO_WIN		0
+# define IA_WIN		1
+# define USER_WIN	2
+
+
+# define NORMAL		true
+# define REVERSE	false
 
 typedef struct s_map
 {
@@ -35,6 +39,7 @@ bool	prompt(t_map *map);
 
 void	print_map(t_map map);
 void	print_winner(const int winner);
+int		error(const char *str, const int ret);
 
 bool	clear_map(t_map *map);
 
