@@ -6,7 +6,7 @@
 /*   By: esafar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 11:44:05 by esafar            #+#    #+#             */
-/*   Updated: 2022/02/12 19:08:23 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:16:32 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	ia(t_map *map)
 	bool	order;
 	size_t	i;
 
+	i = 0;
 	if (!case_4(map, &order))
 		case_regular(map, &i, &order);
 	if (order == NORMAL && map->map[i] % 4 != 1)

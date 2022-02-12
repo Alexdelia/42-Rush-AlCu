@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 14:50:56 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 17:46:05 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:26:06 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*gal_big(const int fd, char *output, size_t *size)
 	return (output);
 }
 
-char	*gal(const int fd, size_t *size)
+char	*gal(const int fd, size_t *size, const bool all)
 {
 	char	*output;
 	ssize_t	res;
@@ -59,7 +59,7 @@ char	*gal(const int fd, size_t *size)
 		return (gal_error(fd, output));
 	output[res] = '\0';
 	*size += res;
-	if (res == 0 || res < GAL_INIT_BUFFER)
+	if (res == 0 || (all == false && res < GAL_INIT_BUFFER))
 		return (output);
 	return (gal_big(fd, output, size));
 }

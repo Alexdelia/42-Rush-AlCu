@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 12:20:30 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:22:56 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,6 @@ int				ft_prev_prime(int n);
 unsigned long	ft_next_prime_ul(unsigned long n);
 unsigned long	ft_prev_prime_ul(unsigned long n);
 
-char			*gal(const int fd, size_t *size);
+char			*gal(const int fd, size_t *size, const bool all);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:21:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 18:23:18 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 19:23:57 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ bool	parse(t_map *map, const int fd)
 	char	*file;
 	size_t	size;
 
-	file = gal(fd, &size);
+	file = gal(fd, &size, true);
 	if (!file)
 		return (!ft_pser("ERROR reading file\n")); // tmp
 	else if (!size)
