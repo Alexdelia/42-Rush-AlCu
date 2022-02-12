@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:53:36 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 12:07:36 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:24:40 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	main(int ac, char **av)
 		print_map(map);
 		//ia(&map);
 	}
-	//print_winner(map.winner); // if winner == NO_WIN, don't print anything
+	print_winner(map.winner);
 	clear_map(&map);
 	return (0);
 }

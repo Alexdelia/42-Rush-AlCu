@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:15:05 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 12:22:04 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 12:28:33 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,14 @@ bool	prompt(t_map *map)
 		choice = input[0] - '0';
 		input_check(input, size, &choice, map->map[last_index]);
 		free(input);
-		input = NULL; //:
+		input = NULL;
 	}
 	map->map[last_index] -= choice;
 	map->n_item -= choice;
 	if (map->map[0] == 0)
+	{
+		map->winner = IA_WIN;
 		return (true);
+	}
 	return (false);
 }
