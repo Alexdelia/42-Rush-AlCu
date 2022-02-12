@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:15:05 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 11:09:43 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 11:29:39 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static size_t	last_heap(t_map *map)
 	i = 0;
 	while (map->map[i] != 0)
 		i++;
-	return (map->map[i]);
+	if (i == 0)
+		return (0);
+	return (i - 1);
 }
 
 static void	prompt_message(const size_t max)
@@ -49,7 +51,7 @@ bool	prompt(t_map *map)
 	while (choice == 0)
 	{
 		prompt_message(map->map[last_index]);
-		input = gal(0, &size);
+		input = gal(STDIN, &size);
 		if (!input)
 			return (true);
 		if (!size)
