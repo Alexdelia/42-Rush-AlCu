@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 15:47:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 12:26:51 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 14:36:47 by esafar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_map
 }			t_map;
 
 bool	parse(t_map *map, const int fd);
+void    ia(t_map *map);
 bool	prompt(t_map *map);
 
 void	print_map(t_map map);
