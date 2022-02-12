@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:53:36 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 15:25:42 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 16:49:33 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,44 @@ static bool	init_map(const int ac, char **av, t_map *map, int *fd)
 	return (true);
 }
 
+/*static size_t	*map_cpy(size *src)
+{
+	size_t	*new;
+	size_t	x;
+	size_t	y;
+	bool	one;
+
+	x = 0;
+	while (src[x] != 0)
+		x++;
+	new = (size_t *)malloc(sizeof(size_t) * x);
+	if (!new)
+		return (NULL);
+	y = 0;
+	x = 0;
+	while (src[x] != 0)
+	{
+		one = false;
+		while (src[x] == 1)
+		{
+			one = !one;
+			x++;
+		}
+		if (one = true)
+		{
+			new[y] = 1;
+			y++;
+		}
+		if (src[x] == 0)
+		{
+			new[y] = src[x];
+			y++;
+		}
+	}
+	new[y] = 0;
+	return (new);
+}*/
+
 int	main(int ac, char **av)
 {
 	t_map	map; // int that represent winner is also saved in map
@@ -47,6 +85,9 @@ int	main(int ac, char **av)
 		return (1);
 	if (!parse(&map, fd))
 		return (2);
+	/*map->simple = map_cpy(map->map);
+	if (!map->simple)
+		return (3);*/
 	print_map(map);
 	ia(&map);
 	while (map.n_item > 0)

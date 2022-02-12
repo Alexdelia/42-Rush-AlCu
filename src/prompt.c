@@ -6,18 +6,18 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:15:05 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 12:28:33 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 16:48:52 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/alcu.h"
 
-static size_t	last_heap(t_map *map)
+static size_t	last_heap(size_t *map)
 {
 	size_t	i;
 
 	i = 0;
-	while (map->map[i] != 0)
+	while (map[i] != 0)
 		i++;
 	if (i == 0)
 		return (0);
@@ -71,7 +71,7 @@ bool	prompt(t_map *map)
 	size_t	choice;
 	size_t	last_index;
 
-	last_index = last_heap(map);
+	last_index = last_heap(map->map);
 	choice = 0;
 	while (choice == 0)
 	{
