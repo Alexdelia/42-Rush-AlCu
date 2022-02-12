@@ -6,18 +6,18 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:21:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 11:04:22 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 11:55:24 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/alcu.h"
 
-static void	n_heap(t_map *map, const char *file)
+static void	n_heap(t_map *map, const char *file, const size_t size)
 {
 	size_t	i;
 
 	i = 0;
-	while (file[i])
+	while (i < size)
 	{
 		if (file[i] == '\n')
 			map->n_heap++;
@@ -25,14 +25,14 @@ static void	n_heap(t_map *map, const char *file)
 	}
 }
 
-static bool	check_digit(const char *file)
+static bool	check_digit(const char *file, const size_t size)
 {
 	size_t	i;
 	bool	n;
 
 	n = false;
 	i = 0;
-	while (file[i])
+	while (i < size)
 	{
 		if (!(file[i] > '0' && file[i] < '9'))
 		{
@@ -51,12 +51,12 @@ static bool	check_digit(const char *file)
 	return (true);
 }
 
-static size_t	line_to_size_t(const char *file, size_t *i)
+static size_t	line_to_size_t(const char *file, size_t *i, const size_t size)
 {
 	size_t	ret;
 
 	ret = 0;
-	while (file[*i] && file[*i] != '\n')
+	while (*i < size && file[*i] != '\n')
 	{
 		ret = ret * 10 + (file[*i] - '0');
 		if (ret > 10000)
@@ -65,23 +65,23 @@ static size_t	line_to_size_t(const char *file, size_t *i)
 	}
 	if (ret == 0)
 		return (!ft_pser("ERROR heap can't have 0 item\n")); // tmp
-	if (file[*i])
+	if (*i < size)
 		++*i;
 	return (ret);
 }
 
-static bool	fill_map(t_map *map, const char *file)
+static bool	fill_map(t_map *map, const char *file, const size_t size)
 {
 	size_t	heap;
 	size_t	i;
 
 	heap = 0;
 	i = 0;
-	if (!check_digit(file))
+	if (!check_digit(file, size))
 		return (false);
-	while (file[i])
+	while (i < size)
 	{
-		map->map[heap] = line_to_size_t(file, &i);
+		map->map[heap] = line_to_size_t(file, &i, size);
 		if (map->map[heap] == 0)
 			return (false);
 		map->n_item += map->map[heap];
@@ -104,14 +104,14 @@ bool	parse(t_map *map, const int fd)
 		free(file);
 		return (!ft_pser("ERROR empty file\n")); // tmp
 	}
-	n_heap(map, file); // should not need to check if n_heap > 0
+	n_heap(map, file, size); // should not need to check if n_heap > 0
 	map->map = (size_t *)malloc(sizeof(size_t) * (map->n_heap + 1));
 	if (!map->map)
 	{
 		free(file);
 		return (!ft_pser("ERROR malloc failed\n")); // tmp
 	}
-	if (!fill_map(map, file))
+	if (!fill_map(map, file, size))
 	{
 		free(file);
 		return (clear_map(map));
