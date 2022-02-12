@@ -6,7 +6,7 @@
 /*   By: esafar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 11:44:05 by esafar            #+#    #+#             */
-/*   Updated: 2022/02/12 16:49:10 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 17:04:03 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,22 @@ static bool	case_4(t_map *map)
 	return (true);
 }
 
+static bool	tmp(t_map *map, size_t i)
+{
+	size_t	n;
+
+	if (map->map[i - 1] != 1)
+		return (false);
+	n = 0;
+	i--;
+	while (i >= 0 && map->map[i] == 1)
+	{
+		n++;
+		i--;
+	}
+	return (n % 2);
+}
+
 void    ia(t_map *map)
 {
 	bool	order;
@@ -95,7 +111,9 @@ void    ia(t_map *map)
 		while (map->map[i] != 0)
 			i++;
 		i--;
-		if (map->map[i - 1] == 1)
+		//if (only if number of 1 before line is odd)
+		//if (map->map[i - 1] == 1) //
+		if (tmp(map, i))
 			order = IA_TAKE;
 		else
 			order = USER_TAKE;

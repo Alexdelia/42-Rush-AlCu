@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:15:05 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 16:48:52 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 17:05:53 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static bool	input_check(const char *input, const size_t size,
 	{
 		ft_ps(input);
 		ft_ps(" - Invalid choice\n");
-		choice = 0;
+		*choice = 0;
 		return (false);
 	}
 	else if (size == 2)
@@ -58,7 +58,7 @@ static bool	input_check(const char *input, const size_t size,
 	{
 		ft_ps(input);
 		ft_ps(" - Invalid choice\n");
-		choice = 0;
+		*choice = 0;
 		return (false);
 	}
 	return (true);
