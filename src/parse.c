@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:21:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 16:32:56 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 18:23:18 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static bool	check_digit(const char *file, const size_t size)
 	return (true);
 }
 
-static size_t	line_to_size_t(const char *file, size_t *i, const size_t size)
+size_t	line_to_size_t(const char *file, size_t *i, const size_t size)
 {
 	size_t	ret;
 

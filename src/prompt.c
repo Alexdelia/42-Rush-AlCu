@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:15:05 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 17:05:53 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 18:42:35 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,28 @@ static void	prompt_message(const size_t max)
 	write(1, "\n", 1);
 }
 
-static bool	input_check(const char *input, const size_t size,
-	size_t *choice, const size_t max)
+static size_t	check_input(const char *input, const size_t max)
 {
-	if (*choice == 0 || *choice > 3 || *choice > max)
+	size_t	i;
+	size_t	ret;
+
+	ret = 0;
+	i = 0;
+	while (input[i] && input[i] != '\n')
 	{
-		ft_ps(input);
-		ft_ps(" - Invalid choice\n");
-		*choice = 0;
-		return (false);
+		if (!(input[i] > '0' && input[i] < '9'))
+			return ((write(1, input, ft_strlen(input) - 1)
+					+ ft_pser(" - Invalid input\t(Only digits)\n")) * 0);
+		ret = ret * 10 + (input[i] - '0');
+		if (ret > UINT_MAX)
+			return ((write(1, input, ft_strlen(input) - 1)
+					+ ft_pser(" - invalid input\t(input > uint_max)\n")) * 0);
+		i++;
 	}
-	else if (size == 2)
-	{
-		if (input[1] == '\n')
-			return (true);
-	}
-	else if (size > 1)
-	{
-		ft_ps(input);
-		ft_ps(" - Invalid choice\n");
-		*choice = 0;
-		return (false);
-	}
-	return (true);
+	if (ret == 0 || ret > 3 || ret > max)
+		return ((write(1, input, ft_strlen(input) - 1)
+				+ ft_pser(" - invalid input\n")) * 0);
+	return (ret);
 }
 
 bool	prompt(t_map *map)
@@ -80,9 +79,8 @@ bool	prompt(t_map *map)
 		if (!input)
 			return (true);
 		if (!size)
-			return (ft_ps("Please enter map from stdin directly\n"));
-		choice = input[0] - '0';
-		input_check(input, size, &choice, map->map[last_index]);
+			return (ft_ps("Please enter map from stdin directly\n")); // tmp
+		choice = check_input(input, map->map[last_index]);
 		free(input);
 		input = NULL;
 	}
