@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:24:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 19:47:35 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 21:24:19 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	print_map(const t_map map)
 	i = 0;
 	write(1, "\n", 1);
 	ft_ps(C_BOLD);
+	ft_ps(C_ITALIC);
 	while (map.map[i])
 	{
 		len = map.map[i];
@@ -93,10 +94,11 @@ void	print_winner(const int winner)
 {
 	if (winner == NO_WIN)
 		return ;
-	else if (winner == IA_WIN)
-		ft_ps("\nYou lost, IA win\n");
+	ft_ps(C_BOLD);
+	if (winner == IA_WIN)
+		ft_psc("\nYou lost\n", C_RED);
 	else if (winner == USER_WIN)
-		ft_ps("\nGG! You win\n");
+		ft_psc("\nGG! You win\n", C_GREEN);
 }
 
 int	error(const char *str, const int ret)

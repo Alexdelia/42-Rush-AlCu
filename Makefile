@@ -6,11 +6,11 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/02/12 11:04:37 by adelille         ###   ########.fr        #
+#    Updated: 2022/02/12 21:28:08 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =	a.out
+NAME =	alum1
 CC = 	cc
 AR =	ar rcs
 RM = 	rm -rf
