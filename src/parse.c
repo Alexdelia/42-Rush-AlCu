@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:21:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/11 23:31:12 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 11:00:07 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ static size_t	line_to_size_t(const char *file, size_t *i)
 	while (file[*i] && file[*i] != '\n')
 	{
 		ret = ret * 10 + (file[*i] - '0');
-		if (ret > UINT_MAX)
-			return (!ft_pser("ERROR number of item on heap > UINT_MAX\n")); // tmp
+		if (ret > 10000)
+			return (!ft_pser("ERROR number of item on heap > 10000\n")); // tmp
 		++*i;
 	}
 	if (ret == 0)
@@ -87,6 +87,7 @@ static bool	fill_map(t_map *map, const char *file)
 		map->n_item += map->map[heap];
 		heap++;
 	}
+	map->heap = 0;
 	return (true);
 }
 

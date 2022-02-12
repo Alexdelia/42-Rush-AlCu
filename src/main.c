@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:53:36 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/11 23:34:33 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/12 10:27:04 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,16 @@ int	main(int ac, char **av)
 	while (map.n_item > 0)
 	{
 		print_map(map);
-		while (prompt(&map)) // need to get input from user, save it somewhere (will also show board)
-			; // stay in the loop while the user didn't input something valid
-		// prompt return a bool (true if input valid / false if not)
+		if (prompt(&map)) // need to get input from user, save it somewhere
+			break ;
+		// stay in the prompt while the user didn't input something valid
+		// prompt return a bool (true if user lose / false if game continue)
 		// it also save input in map
 		// this is tempoary, could be different logic
-		if (map.n_item == 0)
-			break ;
 		print_map(map);
 		ia(&map);
 	}
-	print_winner(map.winner);
+	print_winner(map.winner); // if winner == NO_WIN, don't print anything
 	clear_map(&map);
 	return (0);
 }
