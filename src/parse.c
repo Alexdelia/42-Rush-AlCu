@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:21:55 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/13 12:50:12 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/13 12:58:22 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static bool	check_digit(const char *file, const size_t size)
 	i = 0;
 	while (i < size)
 	{
-		if (file[i] < '0' && file[i] > '9')
+		if (file[i] < '0' || file[i] > '9')
 		{
 			if (file[i] == '\n')
 			{
