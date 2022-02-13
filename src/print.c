@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:24:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 22:29:05 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/13 12:48:34 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	print_winner(const int winner)
 int	error(const char *str, const int ret)
 {
 	ft_pserc("ERROR\t", RED);
-	if (!str)
+	if (str)
 		ft_pserc(str, C_RED);
 	write(STDERR, "\n", 1);
 	return (ret);
