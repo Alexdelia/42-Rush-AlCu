@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 12:24:54 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/13 12:59:45 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/13 13:42:22 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,9 @@ void	print_winner(const int winner)
 		return ;
 	ft_ps(C_BOLD);
 	if (winner == IA_WIN)
-		ft_psc("\nYou lost\n", C_RED);
+		ft_psc("\n😈 You lost 😈\n", C_RED);
 	else if (winner == USER_WIN)
-		ft_psc("\nGG! You win\n", C_GREEN);
+		ft_psc("\n🎉 GG! You win 🎉\n", C_GREEN);
 }
 
 int	error(const char *str, const int ret)
