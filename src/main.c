@@ -6,7 +6,7 @@
 /*   By: adelille <adelille@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:53:36 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/12 22:35:45 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/13 13:27:51 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int ac, char **av)
 		return (1);
 	if (!parse(&map, fd))
 		return (2);
-	ft_ps("\33[1;1H\33[2J\v\v");
+	ft_ps("\033[1;1H\033[2J\v\v");
 	print_map(map);
 	ia(&map);
 	while (map.n_item > 0)
@@ -79,7 +79,7 @@ int	main(int ac, char **av)
 		print_map(map);
 		if (prompt(&map))
 			break ;
-		ft_ps("\33[1;1H\33[2J\v\v");
+		ft_ps("\033[1;1H\033[2J\v\v");
 		print_map(map);
 		ia(&map);
 	}

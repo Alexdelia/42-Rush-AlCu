@@ -6,7 +6,7 @@
 /*   By: adelille <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 10:15:05 by adelille          #+#    #+#             */
-/*   Updated: 2022/02/13 13:21:51 by adelille         ###   ########.fr       */
+/*   Updated: 2022/02/13 13:28:01 by adelille         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ bool	prompt(t_map *map)
 		if (!size)
 		{
 			free(input);
-			ft_ps("\33[1;1H\33[2J");
+			ft_ps("\033[1;1H\033[2J");
 			return (ft_pserc("Please enter map from stdin directly\n",
 					C_YELLOW));
 		}
