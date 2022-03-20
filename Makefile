@@ -6,7 +6,7 @@
 #    By: adelille <adelille@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/30 19:21:49 by adelille          #+#    #+#              #
-#    Updated: 2022/02/12 21:28:08 by adelille         ###   ########.fr        #
+#    Updated: 2022/03/20 16:44:57 by adelille         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ test:		all
 launch:
 	$(call progress_bar)
 
-$(NAME):	$(OBJS) lib
+$(NAME):	$(OBJS) $(LIBNAME)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBNAME) -o $(NAME)
 
 $(OBJSPATH)%.o: $(SRCSPATH)%.c
@@ -91,20 +91,20 @@ $(OBJSPATH)%.o: $(SRCSPATH)%.c
 	$(CC) $(CFLAGS) -I$(INC) -c $< -o $@
 	@printf "$(B)$(GRE)█$(D)"
 
-lib:
+$(LIBNAME):
 	@printf "$(D)$(B)$(BLU)\n$(NAME) objects compiled\n\n$(D)"
-	@make -C $(LIBPATH)
+	@$(MAKE) -C $(LIBPATH)
 	
 clean:
 	@$(RM) $(OBJSPATH)
-	@make clean -C $(LIBPATH)
+	@$(MAKE) clean -C $(LIBPATH)
 
 fclean:		clean
 	@$(RM) $(NAME)
-	@make fclean -C $(LIBPATH)
+	@$(MAKE) fclean -C $(LIBPATH)
 
 re:			fclean all
 
-.PHONY: all clean fclean re launch lib test
+.PHONY: all clean fclean re launch test
 
 # **************************************************************************** #
